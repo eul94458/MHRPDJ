@@ -21,4 +21,4 @@ Put them in data/rawdata/rawdata2016/ , and make sure that they are all in .csv 
 
 CAUTION
 
-ProgramPart9_FindBuiltupPOPAgglo consist of super computational-intense searching algrothm and the total runtime is 5hr by Core i5-7200u. 
+ProgramPart9_FindBuiltupPOPAgglo consist of super computational-intense search algorithm and the total runtime is 5hr by Core i5-7200u. 
