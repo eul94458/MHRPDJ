@@ -3,10 +3,13 @@ def call_geometry_of_lv1mesh():
 
 def call_populated_lv1mesh():
     return populated_lv1mesh
+    
+def call_landscape_lv1mesh():
+    return landuse_lv1mesh
 
 def call_population_distribution_map(meshID):
     file_name = str(meshID) + ".csv"
-    with open("data/" + file_name , "r") as file:
+    with open("data/rawdata/population2015/" + file_name , "r" , encoding="utf-8") as file:
         population_distribution_map = []
         for n in range(320):
             line = file.readline().strip().rstrip(",")
@@ -15,37 +18,67 @@ def call_population_distribution_map(meshID):
 
         return population_distribution_map
 
+def call_landuse_distribution_map(meshID):
+    file_name = str(meshID) + ".csv"
+    with open("data/step1_landusemesh/landuse_"+str(meshID)+".csv" , "r" , encoding="utf-8") as file:
+        landuse_distribution_map = []
+        for n in range(800):
+            line = file.readline().strip()
+            row = line.split(",")
+            landuse_distribution_map.append(row)
+
+        return landuse_distribution_map
+
+def call_builtuppop_map(meshID):
+    file_name = str(meshID) + ".csv"
+    with open("data/step8_builtuppop_data/PopulationAssignedBuiltup_"+str(meshID)+".csv" , "r" , encoding="utf-8") as file:
+        builtuppop_map = []
+        for n in range(800):
+            line = file.readline().strip()
+            row = line.split(",")
+            builtuppop_map.append(row)
+
+        return builtuppop_map
+
+
+
+
 def writeout(targetlist,filename):
-    with open(filename , "w" , encoding="utf-8") as output_file:
+    with open(filename , "w" , encoding="utf-8") as output_file:  
         if len(targetlist) != 0 :
             if len(targetlist) != 1 :
                 for Y in range(len(targetlist) -1) :
                     if len(targetlist[Y]) != 1 :
                         for X in range(len(targetlist[Y]) -1) :
-                            output_file.write(str(targetlist[Y][X])+",")
+                            output_file.write(str(targetlist[Y][X])+",")                     
                         output_file.write(str(targetlist[Y][-1]))
                         output_file.write("\n")
-
+                    
                     elif len(targetlist[Y]) == 1 :
-                        output_file.write(str(targetlist[Y][0]))
+                        output_file.write(str(targetlist[Y][0])) 
                         output_file.write("\n")
-
-                if len(targetlist[-1]) != 1 :
-                    for X in range(len(targetlist[-1]) -1) :
+                
+                if len(targetlist[-1]) != 1 :                
+                    for X in range(len(targetlist[-1]) -1) :                    
                         output_file.write(str(targetlist[-1][X])+",")
-                    output_file.write(str(targetlist[-1][-1]))
-
+                    output_file.write(str(targetlist[-1][-1]))        
+                    
                 elif len(targetlist[-1]) == 1 :
                     output_file.write(str(targetlist[-1][0]))
-
+    
             elif len(targetlist) == 1 :
                 if len(targetlist[0]) != 1 :
                     for X in range(len(targetlist[0])-1) :
                         output_file.write(str(targetlist[0][X])+",")
-                    output_file.write(str(targetlist[0][-1]))
-
+                    output_file.write(str(targetlist[0][-1]))  
+                
                 elif len(targetlist[0]) == 1 :
-                    output_file.write(str(targetlist[0][0]))
+                    output_file.write(str(targetlist[0][0])) 
+         
+
+
+
+
 
 
 geometry_of_lv1mesh = [ [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6840,6841,6842,0,0,0,0,0,0,0,0,0,0,0],
@@ -120,3 +153,39 @@ populated_lv1mesh = ['6840', '6841', '6842',
                         '3831',
                         '3724', '3725', '3741',
                         '3622', '3623', '3653']
+
+landuse_lv1mesh = [ '6840' , '6841' , '6842' , '6847' , '6848' ,
+                    '6741' , '6742' , '6747' , '6748' ,
+                    '6641' , '6642' , '6643' , '6644' , '6645' , '6646' , '6647' ,
+                    '6540' , '6541' , '6542' , '6543' , '6544' , '6545' , '6546' ,
+                    '6439' , '6440' , '6441' , '6442' , '6443' , '6444' , '6445' ,
+                    '6339' , '6340' , '6341' , '6342' , '6343' ,
+                    '6239' , '6240' , '6241' , '6243' ,
+                    '6139' , '6140' , '6141' ,
+                    '6039' , '6040' , '6041' ,
+                    '5939' , '5940' , '5941' , '5942' ,
+                    '5839' , '5840' , '5841' ,
+                    '5738' , '5739' , '5740' , '5741' ,
+                    '5636' , '5637' , '5638' , '5639' , '5640' , '5641' ,
+                    '5531' , '5536' , '5537' , '5538' , '5539' , '5540' , '5541' ,
+                    '5432' , '5433' , '5435' , '5436' , '5437' , '5438' , '5439' , '5440' ,
+                    '5332' , '5333' , '5334' , '5335' , '5336' , '5337' , '5338' , '5339' , '5340' ,
+                    '5229' , '5231' , '5232' , '5233' , '5234' , '5235' , '5236' , '5237' , '5238' , '5239' , '5240' ,
+                    '5129' , '5130' , '5131' , '5132' , '5133' , '5134' , '5135' , '5136' , '5137' , '5138' , '5139' ,
+                    '5029' , '5030' , '5031' , '5032' , '5033' , '5034' , '5035' , '5036' , '5038' , '5039' ,
+                    '4928' , '4929' , '4930' , '4931' , '4932' , '4933' , '4934' , '4939' ,
+                    '4828' , '4829' , '4830' , '4831' , '4839' ,
+                    '4728' , '4729' , '4730' , '4731' , '4739' , '4740' ,
+                    '4629' , '4630' , '4631' ,
+                    '4529' , '4530' , '4531' , '4540' ,
+                    '4429' , '4440' ,
+                    '4328' , '4329' ,
+                    '4229' , '4230' ,
+                    '4128' , '4129' , '4142' ,
+                    '4027' , '4028' , '4040' , '4042' ,
+                    '3926' , '3927' , '3928' , '3942' ,
+                    '3823' , '3824' , '3831' , '3841' ,
+                    '3724' , '3725' , '3741' ,
+                    '3622' , '3623' , '3624' , '3631' , '3641' , '3653' ,
+                    '3036' ]
+
