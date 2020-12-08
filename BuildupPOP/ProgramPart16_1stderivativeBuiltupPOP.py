@@ -106,7 +106,7 @@ def drawmap(listname,filename):
             #m = (ln(128/6.96875(255-128)))/100
             #int(round(255-(255)/(1+6.96875*math.e**(-(0.6445308971*temp[y,x])))))
             # f(3) = 128
-    im.save("data/step16_1stdeviationBuiltupPOP/"+str(filename) + '.tif')
+    im.save("data/step16_1stderivativeBuiltupPOP/"+str(filename) + '.tif')
 
 def drawmap_logistic(listname,filename):
     maxlist = []
@@ -154,7 +154,7 @@ def drawmap_logistic(listname,filename):
             #m = (ln(128/6.96875(255-128)))/100
             #int(round(255-(255)/(1+6.96875*math.e**(-(0.6445308971*temp[y,x])))))
             # f(3)=128
-    im.save("data/step16_1stdeviationBuiltupPOP/"+str(filename) + '.tif')
+    im.save("data/step16_1stderivativeBuiltupPOP/"+str(filename) + '.tif')
 
 def find_deltainlist(listname):
     listname.sort()
@@ -184,7 +184,7 @@ def gen_scale():
             else:
                 pix[x,y] = (255-temp[y,x],255-temp[y,x],255-temp[y,x])
 
-    im.save("data/step16_1stdeviationBuiltupPOP/grayscale.tif")
+    im.save("data/step16_1stderivativeBuiltupPOP/grayscale.tif")
     print("Scale is output")
 
 
@@ -422,7 +422,7 @@ if __name__ == "__main__":
                     newzscoreinventory.append([buffer,quantity])
                     storedlist.append(buffer)
 
-            filename = "data/step16_1stdeviationBuiltupPOP/GlobalAggloID_"+str(GlobalAggloID)+"_slopeinventory.csv"
+            filename = "data/step16_1stderivativeBuiltupPOP/GlobalAggloID_"+str(GlobalAggloID)+"_slopeinventory.csv"
             metadata.writeout(newzscoreinventory,filename)
 
             filenameslopezmax = "GlobalAggloID_" + str(GlobalAggloID) + "_slopezmax"
