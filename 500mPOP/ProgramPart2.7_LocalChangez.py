@@ -36,7 +36,7 @@ def defferentiate(universe):
                     pplchange = int(after)-int(before)
                     changelist.append(pplchange)
                 
-                print(changelist)
+                #print(changelist)
                 changemean = sum(changelist) / len(changelist)
                 changevariantlist = []
                 for n in changelist:
@@ -60,13 +60,16 @@ def defferentiate(universe):
     
     
     filenameChange = "data/outputdata/step2_populationdifference/LocalChange.csv"
-    writeout(matrixLocalChange,filenameChange)
+    metadata.writeout(matrixLocalChange,filenameChange)
     
     filenameZ = "data/outputdata/step2_populationdifference/LocalZ.csv"
-    writeout(matrixLocalZ,filenameZ)
+    metadata.writeout(matrixLocalZ,filenameZ)
+    
+    filenameS = "data/outputdata/step2_populationdifference/LocalStddec.csv"
+    metadata.writeout(matrixLocalStddev,filenameS)
     
     filenameStddev = "LocalStddec"
-    drawmap(matrixLocalStddev,filenameStddev,2)
+    drawmap(matrixLocalStddev,filenameStddev,1)
     
     
 
