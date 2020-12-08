@@ -77,7 +77,7 @@ def defferentiate(universe):
     #filenameStddev = "Localstddev"
     #drawmap(matrixLocalStddev,filenameStddev,2)
     
-    filenameCV = "LocalstCV"
+    filenameCV = "LocalCV"
     drawmap(matrixLocalCV,filenameCV,2)
 
 
