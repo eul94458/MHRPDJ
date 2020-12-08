@@ -18,6 +18,7 @@ def defferentiate(universe):
     matrixLocalChange = []
     matrixLocalZ = []
     matrixLocalStddev = [[0 for i in range(5120)] for j in range(6240)]
+    matrixLocalCV =  [[0 for i in range(5120)] for j in range(6240)]
 
     for rows in range(6240):
         for fields in range(5120):
@@ -49,8 +50,10 @@ def defferentiate(universe):
                     if samplestddev != 0:
                         zscore = (n - changemean) / samplestddev
                         changezscore.append(zscore)
-                    else:
-                        changezscore.append(0)
+                
+                if changemean != 0:
+                    CV = (samplestddev / changemean)*100                
+                    matrixLocalCV[rows][fields] = CV
                         
                 matrixLocalStddev[rows][fields] = samplestddev
                 changelist.insert(0,CellYX)
@@ -59,19 +62,23 @@ def defferentiate(universe):
                 matrixLocalZ.append(changezscore)
     
     
-    filenameChange = "data/outputdata/step2_populationdifference/LocalChange.csv"
-    metadata.writeout(matrixLocalChange,filenameChange)
+    #filenameChange = "data/outputdata/step2_populationdifference/LocalChange.csv"
+    #metadata.writeout(matrixLocalChange,filenameChange)
     
-    filenameZ = "data/outputdata/step2_populationdifference/LocalZ.csv"
-    metadata.writeout(matrixLocalZ,filenameZ)
+    #filenameZ = "data/outputdata/step2_populationdifference/LocalZ.csv"
+    #metadata.writeout(matrixLocalZ,filenameZ)
     
-    filenameS = "data/outputdata/step2_populationdifference/LocalStddec.csv"
-    metadata.writeout(matrixLocalStddev,filenameS)
+    #filenameS = "data/outputdata/step2_populationdifference/Localstddev.csv"
+    #metadata.writeout(matrixLocalStddev,filenameS)
     
-    filenameStddev = "LocalStddec"
-    drawmap(matrixLocalStddev,filenameStddev,1)
+    filenameCV = "data/outputdata/step2_populationdifference/LocalCV.csv"
+    metadata.writeout(matrixLocalCV,filenameCV)
     
+    #filenameStddev = "Localstddev"
+    #drawmap(matrixLocalStddev,filenameStddev,2)
     
+    filenameCV = "LocalstCV"
+    drawmap(matrixLocalCV,filenameCV,2)
 
 
 def drawmap(matx,c,para):
