@@ -42,7 +42,7 @@ def defferentiate(universe):
                 for n in changelist:
                     variant = (n - changemean)**2
                     changevariantlist.append(variant)
-                samplestddev = sum(changevariantlist) / (len(changelist)-1)
+                samplestddev = (sum(changevariantlist) / (len(changelist)-1))**(1/2)
 
                 changezscore = []
                 for n in changelist:
