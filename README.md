@@ -1,7 +1,7 @@
 # MHRPDJ
 MAPPING HIGH RESOLUTION POPULATION DISTRUBUTION OF JAPAN
 
-##Declaration
+## Declaration
 
 This is a repository of the Bacholar Degree Thesis written by the author. 
 
