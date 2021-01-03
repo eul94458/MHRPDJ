@@ -1,6 +1,6 @@
 
 
-Due to some copyright problem, source codes can be open accessed while data used are not uploaded to this repository.
+Due to some copyright problem, source codes can be open accessed while raw data used are not uploaded to this repository.
 
 In order to execute those codes, you have to download all population census data from:
 
