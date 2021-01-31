@@ -18,7 +18,7 @@ Geographic/spatial referenced data is basically 2 dimensional data which at leas
 
 Location data itself is a compond data like (y_x). Let say there is a grid system constitute 800\*800 cells. We are searching for (a_b). The first method to do this is to search the exact coordinate (a_b) in a linear search fashion. As there are 800\*\*2 combinations of x and y, therefore for the worse case which if the target is (799_799), search time is 800\*\*2. 
 
-So the second method is to design a database struture enhence faster searching inherently. Instead of storing the location as a single entity like (y_x), it would be better if it is stored as seperated entities (y),(x). Thus we search for the first entity, and then the second. Seching time is only the double of 800 even though we are using linear search.
+So the second method is to design a database struture enhence faster searching inherently. Instead of storing the location as a single entity like (y_x), it would be better if it is stored as seperated entities (y),(x). Thus we search for the first entity, and then the second. Searching time is only the double of 800 even though we are using linear search.
 
 Therefore, each attribute should be stored as the following:
 
