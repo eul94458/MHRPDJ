@@ -22,7 +22,7 @@ Let say landuse data. A single data record will be like this:
 
       [651452,'foest']
 
-For such data, linear search is not efficient enough. Let say we are searching for one particular cell in a grid system consist of 800\*800 cells, in the worse case, we will have to look for all cells in order to find our target. 800^2 = 640,000 cells are there waiting for us. Considering a nation-wide geographic information database, 1 billion identifiers are possible.
+For such data, linear search is not efficient enough. Let say we are searching for one particular cell in a grid system consisting 800\*800 cells, in the worse case, we will have to look for all cells in order to find our target. 800^2 = 640,000 cells are there waiting for us. Considering a nation-wide geographic information database, 1 billion identifiers are possible.
 
 To tackle this problem, logorithmic search algorithm must be introduced. An example is presented as the following.
 
