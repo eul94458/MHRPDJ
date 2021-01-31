@@ -45,10 +45,10 @@ To tackle this problem, logorithmic search algorithm must be introduced. An exam
                         print(q[limit+1])
                   elif q[limit-1] == k:
                         print(q[limit-1])
-            elif q[limit] == k:
-                  print(q[limit])            
-            else:
-                  print('None')
+                  elif q[limit] == k:
+                        print(q[limit])            
+                  else:
+                        print('None')
 
       templist = []
       for j in range(500000):
