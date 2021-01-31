@@ -16,7 +16,11 @@ Foreseeing greatly improved performance and searching time.
 
 Geographic/spatial referenced data is constitution of location identifier and its attribute. If the space is 2 dimensional which we can assign a set of coordinate (y,x) to it, the data will be in 2+n dimension.
 
-Meanwhile, as foremensioned, location can act as an identifier, such that (y,x) will become a single entity like y_x. For instance, a grid system consist of 800\*800 cells, the cell which y=651 and x=452 will be identified as 651_452, or 651452 if underscore is removed.
+Meanwhile, as foremensioned, location can act as an identifier, such that (y,x) will become a single entity like y_x. For instance, a grid system consist of 800\*800 cells, the cell which y=651 and x=452 will be identified as 651_452, or 651452 if underscore is removed. Thus, reduced one dimension to 2 dimensional dataset.
+
+Let say landuse data. A single data record will be like this:
+
+      [651452,'foest']
 
 For such data, linear search is not efficient enough. Let say we are searching for one particular cell in a grid system consist of 800\*800 cells, in the worse case, we will have to look for all cells in order to find our target. 800^2 = 640,000 cells are there waiting for us. Considering a nation-wide geographic information database, 1 billion identifiers are possible.
 
