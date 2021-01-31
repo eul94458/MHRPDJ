@@ -67,5 +67,3 @@ To tackle this problem, logorithmic search algorithm must be introduced. An exam
 
 The search algorithm is written into a function. It can be modified to fit different usage such as returning boolean or returing target identifier.
 
-By introducing logorithmic search algorithm, serach time is expected to shrinken in a logrithmic manner.
-
