@@ -22,23 +22,23 @@ So the second method is to design a database struture enhence faster searching i
 
 Therefore, each attribute should be stored as the following:
 
-      list = \[\[y_coordinate_1, y_coordinate_2, y_coordinate_3, ... , y_coordinate_n]
+      list = [[y_coordinate_1, y_coordinate_2, y_coordinate_3, ... , y_coordinate_n]
 
-            \[x_coordinate_1, x_coordinate_2, x_coordinate_3, ... , x_coordinate_n]
+            [x_coordinate_1, x_coordinate_2, x_coordinate_3, ... , x_coordinate_n]
 
-            \[attribute_1, attribute_2, attribute_3, ... , attribute_n]].
+            [attribute_1, attribute_2, attribute_3, ... , attribute_n]].
 
 And the duo layer search algrithm is made for faster searching:
 
-      if a in list\[0]: # see if the target is in the list by looking for existence of certain y-coordinate
+      if a in list[0]: # see if the target is in the list by looking for existence of certain y-coordinate
 
-        if b in list\[1]: # see if the target is in the list by looking for existence of certain x-coordinate
+        if b in list[1]: # see if the target is in the list by looking for existence of certain x-coordinate
 
-          for y,i in enumerate(list\[0]): # locating the target column
+          for y,i in enumerate(list[0]): # locating the target column
 
             if i == a: # matching target's y-coordinate
 
-              if list\[1]\[y] == b: # matching target's x-coordinate
+              if list[1][y] == b: # matching target's x-coordinate
 
-                return list\[2]\[y] # reture attribute
+                return list[2][y] # reture attribute
 
