@@ -40,5 +40,5 @@ And the duo layer search algrithm is made for faster searching:
 
               if list\[1]\[y] == b: # matching target's x-coordinate
 
-                return list\[3]\[y] # reture attribute
+                return list\[2]\[y] # reture attribute
 
