@@ -12,33 +12,60 @@ Foreseeing greatly improved performance and searching time.
 
 ## Design
 
-### Dadabase Design
+### Search Algorithm
 
-Geographic/spatial referenced data is basically 2 dimensional data which at least contains longitude and latitude code. Or inversely, attributes are assigned to each of these locations indentified by longitude and latitude code. There we have 1) attribute and 2) location data combined to form a 3 dimensional dataset. 
+Geographic/spatial referenced data is constitution of location identifier and its attribute. If the space is 2 dimensional which we can assign a set of coordinate (y,x) to it, the data will be in 2+n dimension.
 
-Location data itself is a compond data like (y_x). Let say there is a grid system constitute 800\*800 cells. We are searching for (a_b). The first method to do this is to search the exact coordinate (a_b) in a linear search fashion. As there are 800\*\*2 combinations of x and y, therefore for the worse case which if the target is (799_799), search time is 800\*\*2. 
+Meanwhile, as foremensioned, location can act as an identifier, such that (y,x) will become a single entity like y_x. For instance, a grid system consist of 800\*800 cells, the cell which y=651 and x=452 will be identified as 651_452, or 651452 if underscore is removed.
 
-So the second method is to design a database struture enhence faster searching inherently. Instead of storing the location as a single entity like (y_x), it would be better if it is stored as seperated entities (y),(x). Thus we search for the first entity, and then the second. Searching time is only the double of 800 even though we are using linear search.
+For such data, linear search is not efficient enough. Let say we are searching for one particular cell in a grid system consist of 800\*800 cells, in the worse case, we will have to look for all cells in order to find our target. 800^2 = 640,000 cells are there waiting for us. Considering a nation-wide geographic information database, 1 billion identifiers are possible.
 
-Therefore, each attribute should be stored as the following:
+To tackle this problem, logorithmic search algorithm must be introduced. An example is presented as the following.
 
-      list = [[y_coordinate_1, y_coordinate_2, y_coordinate_3, ... , y_coordinate_n]
+      def search_LogInList(k,q,a,b):
+            # k is the target
+            # q is dataset that may contain the target
+            # a is lower bound of search range
+            # b is upper bound of search range
+            
+            limit = (b+a)//2
+            interval = b-a
+            #print(interval)
+            if interval > 2:
+                  if q[limit] > k: # left
+                        b = limit
+                        search_LogInList(k,q,a,b)
+                  elif q[limit] < k: # right
+                      a = limit
+                       search_LogInList(k,q,a,b)
+                  else:
+                     print(q[limit])
+            else:
+                  if q[limit+1] == k:
+                        print(q[limit+1])
+                  elif q[limit-1] == k:
+                        print(q[limit-1])
+            elif q[limit] == k:
+                  print(q[limit])            
+            else:
+                  print('None')
 
-            [x_coordinate_1, x_coordinate_2, x_coordinate_3, ... , x_coordinate_n]
+      templist = []
+      for j in range(500000):
+            num = j+1
+            templist.append(num)
 
-            [attribute_1, attribute_2, attribute_3, ... , attribute_n]].
+      while True:
+            query = input("input a value : ")
 
-And the duo layer search algrithm is made for faster searching:
+            target = int(query)
 
-      if a in list[0]: # see if the target is in the list by looking for existence of certain y-coordinate
+            LowerBound = 0
+            UpperBound = len(templist)-1
 
-        if b in list[1]: # see if the target is in the list by looking for existence of certain x-coordinate
+            search_LogInList(target,templist,LowerBound,UpperBound)
 
-          for y,i in enumerate(list[0]): # locating the target column
+The search algorithm is written into a function. It can be modified to fit different usage such as returning boolean or returing target identifier.
 
-            if i == a: # matching target's y-coordinate
-
-              if list[1][y] == b: # matching target's x-coordinate
-
-                return list[2][y] # reture attribute
+By introducing logorithmic search algorithm, serach time is expected to shrink in a logrithmic manner.
 
