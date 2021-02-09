@@ -5,7 +5,7 @@ MAPPING HIGH RESOLUTION POPULATION DISTRUBUTION OF JAPAN
 
 This is a repository of the Bacholar Degree Thesis written by the author. 
 
-250mPOP = Population Grid with 500m resolution
+250mPOP = Population Grid with 250m resolution
 
 500mPOP = Population Grid with 500m resolution
 
