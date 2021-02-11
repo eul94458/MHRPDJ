@@ -26,8 +26,9 @@ For such data, linear search is not efficient enough. Let say we are searching f
 
 To tackle this problem, binary search algorithm maybe considered to be introduced. However, search algorithm has to be alongside with sorted data and geographic/spatial referenced data is not sorted and cannot be sorted in many situation. Here, the data structure must be construced well in order to enhence quicker search.
 
-      First, unique identifier must be assigned to every location.
-      Second, search algoritm is launched solely upon those unique identifier as we can refer to other database to grap the population or else later.
+First, unique identifier must be assigned to every location.
+
+Second, search algoritm is launched solely upon those unique identifier as we can refer to other database to grap the population or else later.
 
 ### Data Structure
 
