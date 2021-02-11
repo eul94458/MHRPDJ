@@ -24,50 +24,36 @@ Let say landuse data. A single data record will be like this:
 
 For such data, linear search is not efficient enough. Let say we are searching for one particular cell in a grid system consisting 800\*800 cells, in the worse case, we will have to look for all cells in order to find our target. 800^2 = 640,000 cells are there waiting for us. Considering a nation-wide geographic information database, 1 billion identifiers are possible.
 
-To tackle this problem, logorithmic search algorithm must be introduced. An example is presented as the following.
+To tackle this problem, binary search algorithm maybe considered to be introduced. However, search algorithm has to be alongside with sorted data and geographic/spatial referenced data is not sorted and cannot be sorted in many situation. Here, the data structure must be construced well in order to enhence quicker search.
 
-      def search_LogInList(k,q,a,b):
-            # k is the target
-            # q is dataset that may contain the target
-            # a is lower bound of search range
-            # b is upper bound of search range
-            
-            limit = (b+a)//2
-            interval = b-a
-            #print(interval)
-            if interval > 2:
-                  if q[limit] > k: # left
-                        b = limit
-                        search_LogInList(k,q,a,b)
-                  elif q[limit] < k: # right
-                      a = limit
-                       search_LogInList(k,q,a,b)
-                  else:
-                     print(q[limit])
-            else:
-                  if q[limit+1] == k:
-                        print(q[limit+1])
-                  elif q[limit-1] == k:
-                        print(q[limit-1])
-                  elif q[limit] == k:
-                        print(q[limit])            
-                  else:
-                        print('None')
+      First, unique identifier must be assigned to every location.
+      Second, search algoritm is launched solely upon those unique identifier as we can refer to other database to grap the population or else later.
 
-      templist = []
-      for j in range(500000):
-            num = j+1
-            templist.append(num)
+### Data Structure
 
-      while True:
-            query = input("input a value : ")
+Since our purpose is to analysis relationship between locations and create alternative subset containing interested locations, attributes other than geographical ones can be omitted during processing. Also geographic/spatial information is inherent in its unique identifier, we can process the data straightly.
 
-            target = int(query)
+      Regional Agglomeration = subset of Local Agglomeration which share mutual border/edge
+      Local Agglomeration = the smallest spatial unit of aggregated human settlement data
 
-            LowerBound = 0
-            UpperBound = len(templist)-1
+Their relationships are referred in a nested list, namely, a 3 dimensional list:
+      
+      [
+      regional1 [ local1, local2, local3 ]
+      regional2 [ local4, local5, local6 ]
+      regional3 [ local7, local8, local9 ]
+      ]
 
-            search_LogInList(target,templist,LowerBound,UpperBound)
+So as we execute some code to search for one specific item, executing speed will be immense:
 
-The search algorithm is written into a function. It can be modified to fit different usage such as returning boolean or returing target identifier.
-
+      Regional_Agglomerations = [ regional1 [ local1, local2, local3 ]
+                                  regional2 [ local4, local5, local6 ]
+                                  regional3 [ local7, local8, local9 ] ]
+      
+      for each_RegAgg in Reginoal_Agglomeration:
+            if local5 in each_RegAgg:
+                  p = each_RegAgg.index(local5)
+                  q = Regional_Agglomerations.index(each_RegAgg)
+                  print('local5 is contained in Regional_Agglomerations[{}][{}]'.format(q,p)
+                  
+                  
