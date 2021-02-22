@@ -5,7 +5,7 @@ MAPPING HIGH RESOLUTION POPULATION DISTRUBUTION OF JAPAN
 
 This is a repository of the Bacholar Degree Thesis written by the author. 
 
-This branch is aimed at better algrithm/database management design. 
+This branch is aimed at better algorithm/database management design. 
 
 Foreseeing greatly improved performance and searching time.
 
