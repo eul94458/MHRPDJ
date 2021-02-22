@@ -9,6 +9,8 @@ This branch is aimed at better algrithm/database management design.
 
 Foreseeing greatly improved performance and searching time.
 
+**By the way, it is still under construction.
+
 
 ## Design
 
